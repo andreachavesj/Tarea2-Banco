@@ -14,40 +14,42 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class CuentaAhorroProgramado {
-    @FXML
+public class CuentaAhorro {
+@FXML
     TextField txtCedula;
-    @FXML TextField txtCorriente;
-    @FXML TextField txtMonto;
-    @FXML
-    Button btnRegresar;
-    @FXML Button btnRegistrar;
+@FXML TextField txtDeposito;
+@FXML TextField txtInteres;
+@FXML Button btnRegresar;
+@FXML Button btnRegistrar;
 
     public void guardarCuenta() throws Exception {
         String cedula=txtCedula.getText();
-        int cuentaCorriente = Integer.valueOf(txtCorriente.getText());
-        Double deposito= Double.valueOf(txtMonto.getText());
-        if(CuentaControlador.verificarCliente(cedula, cuentaCorriente)==true && ValidarCampos(cedula, cuentaCorriente, deposito)==true){
-            int numeroCuentaProgramado = CuentaControlador.registrarCuentaAhorroProgramado(cedula, deposito, cuentaCorriente);
-            mensajeExitoso(numeroCuentaProgramado);
+        Double deposito= Double.valueOf(txtDeposito.getText());
+        Double interes= Double.valueOf(txtInteres.getText());
+
+        if(CuentaControlador.verificarCedula(cedula)==true && ValidarCampos(deposito)==true){
+            int numeroCuenta = CuentaControlador.registrarCuentaAhorro(cedula, deposito, interes);
+            mensajeExitoso(numeroCuenta);
+            System.out.println(CuentaControlador.conjuntoCuentasAhorro.toString());
+
         }else{
             mensajeError();
         }
     }
-    public boolean ValidarCampos( String cedula, int cuentaAsociada, double monto){
+    public boolean ValidarCampos(double deposito){
         boolean completo=true;
-        if(cedula.isEmpty()){
+        if((txtCedula==null)||(txtDeposito==null)||(txtInteres==null)){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
             alert.setContentText("Error debido a espacios en blanco");
             alert.showAndWait();
             return completo=false;
-        }else if(monto< 0){
+        }else if(deposito< 50000){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
-            alert.setContentText("Error debido a monto a debitar no suficiente");
+            alert.setContentText("Error debido a deposito inicial insuficiente");
             alert.showAndWait();
             return completo=false;
         }else{

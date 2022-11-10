@@ -16,6 +16,7 @@ public class CrearCuenta {
     Button btnCorriente;
     @FXML Button btnRegresar;
     @FXML Button btnAhorroP;
+    @FXML Button btnAhorro;
 
 
     public void IrMenu(ActionEvent actionEvent) throws IOException {
@@ -34,4 +35,10 @@ public class CrearCuenta {
         Stage window = (Stage) btnAhorroP.getScene().getWindow();
         window.setScene(new Scene(root));
     }
+    public void IrCrearCuentaAhorro(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("CrearCuentaAhorro.fxml")));
+        Stage window = (Stage) btnAhorro.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+
 }

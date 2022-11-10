@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.CuentaAhorro">
+   <children>
+      <Text layoutX="135.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cédula" />
+      <Text layoutX="135.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposito" />
+      <Text layoutX="135.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasa de interés" />
+      <Text layoutX="251.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cuenta Ahorro" />
+      <Button fx:id="btnRegresar" layoutX="199.0" layoutY="282.0" mnemonicParsing="false" onAction="#IrCrearCuenta" text="Regresar" />
+      <Button fx:id="btnRegistrar" layoutX="353.0" layoutY="282.0" mnemonicParsing="false" onAction="#guardarCuenta" text="Registrar" />
+      <TextField fx:id="txtCedula" layoutX="226.0" layoutY="81.0" />
+      <TextField fx:id="txtDeposito" layoutX="226.0" layoutY="152.0" />
+      <TextField fx:id="txtInteres" layoutX="226.0" layoutY="223.0" />
+   </children>
+</AnchorPane>

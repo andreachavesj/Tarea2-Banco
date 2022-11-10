@@ -50,10 +50,11 @@ public class CuentaCorriente {
             alert.setTitle("Error");
             alert.setContentText("Error debido a deposito inicial insuficiente");
             alert.showAndWait();
+            return completo=false;
+
         }else{
             return completo=true;
         }
-        return completo;
     }
     public void mensajeExitoso(int cuenta){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
