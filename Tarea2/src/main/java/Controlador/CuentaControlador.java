@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.*;
+import Vista.Deposito;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -82,5 +83,29 @@ public class CuentaControlador {
         conjuntoCuentasAhorro.add(cuentaAhorro);
 
         return numeroCuentaAhorro;
+    }
+
+    public static void depositar(String cedula, int cuenta, double deposito) {
+        for (CuentaCorriente conjuntoCuentaCorriente : conjuntoCuentasCorrientes){
+            if (conjuntoCuentaCorriente.getCedula().equals(cedula) && conjuntoCuentaCorriente.getNumeroCuenta() == cuenta) {
+                conjuntoCuentaCorriente.setSaldo(conjuntoCuentaCorriente.getSaldo()+deposito);
+                Deposito.mensajeExitoso();
+                break;
+            }
+        }
+        for (CuentaAhorro conjuntoCuentaAhorro : conjuntoCuentasAhorro){
+            if (conjuntoCuentaAhorro.getCedula().equals(cedula) && conjuntoCuentaAhorro.getNumeroCuenta() == cuenta) {
+                conjuntoCuentaAhorro.setSaldo(conjuntoCuentaAhorro.getSaldo()+deposito);
+                Deposito.mensajeExitoso();
+                break;
+            }
+        }
+        for (CuentaAhorroProgramado conjuntoCuentaAhorroProgramado : conjuntoCuentasAhorroProgramado){
+            if (conjuntoCuentaAhorroProgramado.getCedula().equals(cedula) && conjuntoCuentaAhorroProgramado.getNumeroCuenta() == cuenta) {
+                Deposito.mensajeError();
+                break;
+            }
+        }
+
     }
 }
