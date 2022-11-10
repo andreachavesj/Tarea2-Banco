@@ -5,15 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Banco">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Deposito">
    <children>
       <Text layoutX="164.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula" />
       <Text layoutX="164.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Cuenta" />
       <Text layoutX="164.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monto" />
       <Text layoutX="277.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposito" />
-      <Button fx:id="btnDepositar" layoutX="325.0" layoutY="318.0" mnemonicParsing="false" text="Depositar" />
-      <Button fx:id="btnRegresar" layoutX="206.0" layoutY="318.0" mnemonicParsing="false" text="Regresar" />
+      <Button fx:id="btnDepositar" layoutX="325.0" layoutY="318.0" mnemonicParsing="false" onAction="#realizarDeposito" text="Depositar" />
+      <Button fx:id="btnRegresar" layoutX="206.0" layoutY="318.0" mnemonicParsing="false" onAction="#IrAccederCuenta" text="Regresar" />
       <TextField fx:id="txtCedula" layoutX="269.0" layoutY="117.0" />
       <TextField fx:id="txtCuenta" layoutX="269.0" layoutY="188.0" />
       <TextField fx:id="txtMonto" layoutX="269.0" layoutY="250.0" />
