@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Banco">
+   <children>
+      <Text layoutX="255.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceso a cuenta" wrappingWidth="90.4765625" />
+      <Button fx:id="btnCorriente" layoutX="109.0" layoutY="110.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" text="Cuenta Corriente " />
+      <Button fx:id="btnAhorro" layoutX="403.0" layoutY="110.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="94.0" text="Cuenta Ahorro" />
+      <Button fx:id="btnAhorroP" layoutX="225.0" layoutY="214.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="163.0" text="Cuenta Ahorro Programado" />
+      <Button fx:id="btnRegresar" layoutX="274.0" layoutY="325.0" mnemonicParsing="false" text="Regresar" />
+   </children>
+</AnchorPane>
