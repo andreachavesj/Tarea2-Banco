@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.*;
 import Vista.Deposito;
+import Vista.Retiro;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -106,6 +107,29 @@ public class CuentaControlador {
                 break;
             }
         }
+    }
+    public static void retirar(String cedula, int cuenta, double retiro) {
+        for (CuentaCorriente conjuntoCuentaCorriente : conjuntoCuentasCorrientes){
+            if (conjuntoCuentaCorriente.getCedula().equals(cedula) && conjuntoCuentaCorriente.getNumeroCuenta() == cuenta&&(retiro<conjuntoCuentaCorriente.getSaldo())) {
+                conjuntoCuentaCorriente.setSaldo(conjuntoCuentaCorriente.getSaldo()-(retiro));
+                Retiro.mensajeExitoso();
+                break;
+            }
+        }
 
+        for (CuentaAhorro conjuntoCuentaAhorro : conjuntoCuentasAhorro){
+            double saldoPermitido= (conjuntoCuentaAhorro.getSaldo()/2);
+            if (conjuntoCuentaAhorro.getCedula().equals(cedula) && conjuntoCuentaAhorro.getNumeroCuenta() == cuenta&&(conjuntoCuentaAhorro.getSaldo()>=100000)&& (retiro<= saldoPermitido)){
+                conjuntoCuentaAhorro.setSaldo(conjuntoCuentaAhorro.getSaldo()-retiro);
+                Retiro.mensajeExitoso();
+                break;
+            }
+        }
+        for (CuentaAhorroProgramado conjuntoCuentaAhorroProgramado : conjuntoCuentasAhorroProgramado){
+            if (conjuntoCuentaAhorroProgramado.getCedula().equals(cedula) && conjuntoCuentaAhorroProgramado.getNumeroCuenta() == cuenta) {
+                Retiro.mensajeError();
+                break;
+            }
+        }
     }
 }
