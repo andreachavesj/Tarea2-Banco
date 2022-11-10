@@ -18,6 +18,16 @@ public class MovimientosCuenta {
 
     @FXML Button btnRetiro;
     @FXML Button btnDeposito;
+    public void IrRetiro(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("Retiro.fxml")));
+        Stage window = (Stage) btnRetiro.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
+    public void IrDeposito(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("Deposito.fxml")));
+        Stage window = (Stage) btnDeposito.getScene().getWindow();
+        window.setScene(new Scene(root));
+    }
 
     public void IrMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("Menu.fxml")));

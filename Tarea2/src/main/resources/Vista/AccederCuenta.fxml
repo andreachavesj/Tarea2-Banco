@@ -7,8 +7,8 @@
 <AnchorPane prefHeight="255.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.MovimientosCuenta">
    <children>
       <Text layoutX="255.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceso a cuenta" wrappingWidth="90.4765625" />
-      <Button fx:id="btnRetiro" layoutX="109.0" layoutY="110.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" text="Retiro" />
-      <Button fx:id="btnDeposito" layoutX="403.0" layoutY="110.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="94.0" text="Deposito" />
+      <Button fx:id="btnRetiro" layoutX="109.0" layoutY="110.0" mnemonicParsing="false" onAction="#IrRetiro" prefHeight="51.0" prefWidth="110.0" text="Retiro" />
+      <Button fx:id="btnDeposito" layoutX="403.0" layoutY="110.0" mnemonicParsing="false" onAction="#IrDeposito" prefHeight="51.0" prefWidth="94.0" text="Deposito" />
       <Button fx:id="btnRegresar" layoutX="269.0" layoutY="200.0" mnemonicParsing="false" onAction="#IrMenu" text="Regresar" />
    </children>
 </AnchorPane>
