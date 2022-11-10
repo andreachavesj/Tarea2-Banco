@@ -1,9 +1,6 @@
 package Controlador;
 
-import Modelo.Cliente;
-import Modelo.Cuenta;
-import Modelo.CuentaAhorroProgramado;
-import Modelo.CuentaCorriente;
+import Modelo.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +9,7 @@ public class CuentaControlador {
     public static ArrayList<Cuenta> conjuntoCuentas=new ArrayList<Cuenta>();
     public static ArrayList<CuentaCorriente> conjuntoCuentasCorrientes =new ArrayList<CuentaCorriente>();
     public static ArrayList<CuentaAhorroProgramado> conjuntoCuentasAhorroProgramado= new ArrayList<CuentaAhorroProgramado>();
-
+    public static ArrayList<CuentaAhorro> conjuntoCuentasAhorro= new ArrayList<CuentaAhorro>();
     public static int registrarCuentaCorriente(String identificacion, double deposito) {
         int numeroCuenta = Integer.parseInt("1"+ numeroRandomCuenta(100000, 999999));
         LocalDate fechaApertura = LocalDate.now();
@@ -75,5 +72,15 @@ public class CuentaControlador {
         }else{
             return true;
         }
+    }
+
+    public static int registrarCuentaAhorro(String cedula,double deposito, double interes) {
+        int numeroCuentaAhorro = Integer.parseInt("2"+ numeroRandomCuenta(100000, 999999));
+        LocalDate fechaApertura = LocalDate.now();
+        CuentaAhorro cuentaAhorro = new CuentaAhorro(cedula, numeroCuentaAhorro, deposito, fechaApertura, interes);
+        conjuntoCuentas.add(cuentaAhorro);
+        conjuntoCuentasAhorro.add(cuentaAhorro);
+
+        return numeroCuentaAhorro;
     }
 }
