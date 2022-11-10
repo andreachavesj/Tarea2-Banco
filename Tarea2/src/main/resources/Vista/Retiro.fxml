@@ -5,15 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Banco">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.Retiro">
    <children>
       <Text layoutX="277.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Retiro" />
       <Text layoutX="117.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula" />
       <Text layoutX="117.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Cuenta" />
       <Text layoutX="117.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monto" />
-      <Button fx:id="btnRegresar" layoutX="170.0" layoutY="311.0" mnemonicParsing="false" text="Regresar" />
-      <Button fx:id="btnRetirar" layoutX="355.0" layoutY="311.0" mnemonicParsing="false" text="Retirar" />
+      <Button fx:id="btnRegresar" layoutX="170.0" layoutY="311.0" mnemonicParsing="false" onAction="#IrAccederCuenta" text="Regresar" />
+      <Button fx:id="btnRetirar" layoutX="355.0" layoutY="311.0" mnemonicParsing="false" onAction="#realizarRetiro" text="Retirar" />
       <TextField fx:id="txtCedula" layoutX="250.0" layoutY="116.0" />
       <TextField fx:id="txtCuenta" layoutX="250.0" layoutY="179.0" />
       <TextField fx:id="txtMonto" layoutX="250.0" layoutY="240.0" />
