@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.CrearCliente">
+   <children>
+      <Text layoutX="197.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+      <TextField fx:id="txtNombre" layoutX="278.0" layoutY="98.0" />
+      <Text layoutX="197.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cédula" />
+      <TextField fx:id="txtCedula" layoutX="278.0" layoutY="181.0" />
+      <Text layoutX="197.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección" />
+      <TextField fx:id="txtDireccion" layoutX="278.0" layoutY="259.0" />
+      <Text layoutX="255.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Cliente " />
+      <Button fx:id="btnRegistar" layoutX="345.0" layoutY="324.0" mnemonicParsing="false" onAction="#guardarDatos" text="Registrar" />
+      <Button fx:id="btnRegresar" layoutX="208.0" layoutY="324.0" mnemonicParsing="false" onAction="#IrMenu" text="Regresar" />
+   </children>
+</AnchorPane>
