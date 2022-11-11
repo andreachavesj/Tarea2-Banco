@@ -67,7 +67,7 @@ public class CuentaAhorro {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("La cédula ingresada no ha sido registrada");
+        alert.setContentText("Existe un error, verifique los datos");
         alert.showAndWait();
     }
     public void IrCrearCuenta(ActionEvent actionEvent) throws IOException {

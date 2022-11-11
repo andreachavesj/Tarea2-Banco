@@ -44,7 +44,7 @@ public class Retiro {
             alert.setContentText("Error debido a espacios en blanco");
             alert.showAndWait();
             return completo=false;
-        }else if(retiro<0){
+        }else if(retiro<=0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
@@ -59,7 +59,7 @@ public class Retiro {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setTitle("Exito");
-        alert.setContentText("Deposito realizado con éxito");
+        alert.setContentText("Retiro realizado con éxito");
         alert.showAndWait();
     }
     public static void mensajeError(){

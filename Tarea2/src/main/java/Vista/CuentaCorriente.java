@@ -67,7 +67,7 @@ public class CuentaCorriente {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("La cédula ingresada no ha sido registrada");
+        alert.setContentText("Ocurrio un error, verifique los datos ingresados");
         alert.showAndWait();
     }
     public void IrCrearCuenta(ActionEvent actionEvent) throws IOException {
