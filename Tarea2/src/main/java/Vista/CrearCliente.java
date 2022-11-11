@@ -53,7 +53,7 @@ public class CrearCliente {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("Error debido a cedula repetida");
+        alert.setContentText("Ha ocurrido un erorr por espacios en blanco o cédula repetida");
         alert.showAndWait();
     }
 

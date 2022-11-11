@@ -43,7 +43,7 @@ public class Deposito {
             alert.setContentText("Error debido a espacios en blanco");
             alert.showAndWait();
             return completo=false;
-        }else if(deposito<0){
+        }else if(deposito<=0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");

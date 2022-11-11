@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.*;
 import Vista.Deposito;
+import Vista.MostrarSaldo;
 import Vista.Retiro;
 
 import java.time.LocalDate;
@@ -44,6 +45,12 @@ public class CuentaControlador {
         int numeroCuentaProgramado = Integer.parseInt("3"+ numeroRandomCuenta(100000, 999999));
         LocalDate fechaApertura = LocalDate.now();
         CuentaAhorroProgramado cuentaAhorroProgramado = new CuentaAhorroProgramado(identificacion, numeroCuentaProgramado, deposito, fechaApertura, cuentaCorriente);
+        for (CuentaCorriente conjuntoCuentaCorriente : conjuntoCuentasCorrientes){
+            if (conjuntoCuentaCorriente.getCedula().equals(identificacion) && conjuntoCuentaCorriente.getNumeroCuenta() == cuentaCorriente) {
+                conjuntoCuentaCorriente.setSaldo(conjuntoCuentaCorriente.getSaldo()-deposito);
+                break;
+            }
+        }
         conjuntoCuentas.add(cuentaAhorroProgramado);
         conjuntoCuentasAhorroProgramado.add(cuentaAhorroProgramado);
 
@@ -53,9 +60,11 @@ public class CuentaControlador {
     public static double mostrarSaldo(String identificacion,int cuenta) {
         double saldo = 0;
         for (Cuenta conjuntoCuenta : conjuntoCuentas){
-            if (conjuntoCuenta.getCedula().equals(identificacion) && conjuntoCuenta.getNumeroCuenta() == cuenta) {
+            if (conjuntoCuenta.getCedula().equals(identificacion) && conjuntoCuenta.getNumeroCuenta() == cuenta &&conjuntoCuenta.getSaldo()>0) {
                 saldo= conjuntoCuenta.getSaldo();
                 break;
+            }else if(conjuntoCuenta.getSaldo()==0){
+                MostrarSaldo.sinSaldo();
             }
         }
         return saldo;
@@ -87,10 +96,13 @@ public class CuentaControlador {
     }
 
     public static void depositar(String cedula, int cuenta, double deposito) {
+        LocalDate fechaDeposito = LocalDate.now();
+        String descripcion= "Deposito a cuenta";
         for (CuentaCorriente conjuntoCuentaCorriente : conjuntoCuentasCorrientes){
             if (conjuntoCuentaCorriente.getCedula().equals(cedula) && conjuntoCuentaCorriente.getNumeroCuenta() == cuenta) {
                 conjuntoCuentaCorriente.setSaldo(conjuntoCuentaCorriente.getSaldo()+deposito);
                 Deposito.mensajeExitoso();
+                Movimientos movimientos= new Movimientos(cuenta, fechaDeposito, descripcion, deposito);
                 break;
             }
         }
@@ -98,6 +110,7 @@ public class CuentaControlador {
             if (conjuntoCuentaAhorro.getCedula().equals(cedula) && conjuntoCuentaAhorro.getNumeroCuenta() == cuenta) {
                 conjuntoCuentaAhorro.setSaldo(conjuntoCuentaAhorro.getSaldo()+deposito);
                 Deposito.mensajeExitoso();
+                Movimientos movimientos= new Movimientos(cuenta, fechaDeposito, descripcion, deposito);
                 break;
             }
         }
@@ -109,27 +122,49 @@ public class CuentaControlador {
         }
     }
     public static void retirar(String cedula, int cuenta, double retiro) {
+        boolean respuestaBuena= true;
+        LocalDate fechaRetiro = LocalDate.now();
+        String descripcion= "Retiro a cuenta";
         for (CuentaCorriente conjuntoCuentaCorriente : conjuntoCuentasCorrientes){
             if (conjuntoCuentaCorriente.getCedula().equals(cedula) && conjuntoCuentaCorriente.getNumeroCuenta() == cuenta&&(retiro<conjuntoCuentaCorriente.getSaldo())) {
                 conjuntoCuentaCorriente.setSaldo(conjuntoCuentaCorriente.getSaldo()-(retiro));
                 Retiro.mensajeExitoso();
+                Movimientos movimientos= new Movimientos(cuenta, fechaRetiro, descripcion, retiro);
+                respuestaBuena=true;
                 break;
             }
+            else{
+                respuestaBuena= false;
+            }
         }
-
         for (CuentaAhorro conjuntoCuentaAhorro : conjuntoCuentasAhorro){
             double saldoPermitido= (conjuntoCuentaAhorro.getSaldo()/2);
             if (conjuntoCuentaAhorro.getCedula().equals(cedula) && conjuntoCuentaAhorro.getNumeroCuenta() == cuenta&&(conjuntoCuentaAhorro.getSaldo()>=100000)&& (retiro<= saldoPermitido)){
                 conjuntoCuentaAhorro.setSaldo(conjuntoCuentaAhorro.getSaldo()-retiro);
-                Retiro.mensajeExitoso();
+                Movimientos movimientos= new Movimientos(cuenta, fechaRetiro, descripcion, retiro);
+                respuestaBuena=true;
                 break;
+            }
+            else{
+                respuestaBuena=false;
             }
         }
         for (CuentaAhorroProgramado conjuntoCuentaAhorroProgramado : conjuntoCuentasAhorroProgramado){
-            if (conjuntoCuentaAhorroProgramado.getCedula().equals(cedula) && conjuntoCuentaAhorroProgramado.getNumeroCuenta() == cuenta) {
-                Retiro.mensajeError();
+            if (conjuntoCuentaAhorroProgramado.getCedula().equals(cedula) && conjuntoCuentaAhorroProgramado.getNumeroCuenta() == cuenta&&(retiro<conjuntoCuentaAhorroProgramado.getSaldo())&&(conjuntoCuentaAhorroProgramado.getApertura().plusYears(1).isBefore(fechaRetiro))) {
+                conjuntoCuentaAhorroProgramado.setSaldo(conjuntoCuentaAhorroProgramado.getSaldo()-retiro);
+                Retiro.mensajeExitoso();
+                Movimientos movimientos= new Movimientos(cuenta, fechaRetiro, descripcion, retiro);
+                respuestaBuena=true;
                 break;
             }
+            else {
+                respuestaBuena=false;
+            }
+        }
+        if(respuestaBuena==false){
+            Retiro.mensajeError();
+        }else{
+            Retiro.mensajeExitoso();
         }
     }
 }

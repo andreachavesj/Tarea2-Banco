@@ -54,7 +54,14 @@ public class MostrarSaldo {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("La cédula ingresada no ha sido registrada");
+        alert.setContentText("Existe un problema con espacios vacios o cedula no registrada");
+        alert.showAndWait();
+    }
+    public static void sinSaldo(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Advertencia");
+        alert.setContentText("Cuenta no tiene fondos");
         alert.showAndWait();
     }
     public void IrMenu(ActionEvent actionEvent) throws IOException {
