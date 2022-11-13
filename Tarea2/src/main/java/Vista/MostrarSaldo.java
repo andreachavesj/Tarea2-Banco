@@ -20,6 +20,11 @@ public class MostrarSaldo {
     @FXML TextField txtNumeroCuenta;
     @FXML Button btnRegresar;
 
+    /**
+     * Funcion que permite ver el saldo si cumple con las validaciones de verificar cliente y validar campos y muestra
+     * mensaje de exito y si no de error
+     * @throws Exception
+     */
     public void verSaldo() throws Exception {
         String cedula=txtId.getText();
         int cuenta = Integer.valueOf(txtNumeroCuenta.getText());
@@ -30,6 +35,11 @@ public class MostrarSaldo {
             mensajeError();
         }
     }
+
+    /**
+     * Funcion que permite validar que no hayan espacios en blanco
+     * @return boolean
+     */
     public boolean ValidarCampos(){
         boolean completo=true;
         if((txtId==null)||(txtNumeroCuenta==null)){
@@ -43,6 +53,11 @@ public class MostrarSaldo {
             return completo=true;
         }
     }
+
+    /**
+     * FUncion que permite mostrar mensaje de exito
+     * @param saldo
+     */
     public void mensajeExitoso(double saldo){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -50,6 +65,10 @@ public class MostrarSaldo {
         alert.setContentText("El saldo de su cuenta es: "+ saldo);
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que permite mostrar mensaje de error
+     */
     public void mensajeError(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
@@ -57,6 +76,10 @@ public class MostrarSaldo {
         alert.setContentText("Existe un problema con espacios vacios o cedula no registrada");
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que muestra mensaje en caso de que el saldo sea igual a 0
+     */
     public static void sinSaldo(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -64,6 +87,12 @@ public class MostrarSaldo {
         alert.setContentText("Cuenta no tiene fondos");
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que permite ir a la ventana de menu principal mediante un boton
+     * @param actionEvent
+     * @throws IOException
+     */
     public void IrMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("Menu.fxml")));
         Stage window = (Stage) btnRegresar.getScene().getWindow();

@@ -4,12 +4,23 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Cliente {
- private String nombre;
+
+    /**
+     * Atributos de la clase cliente
+     */
+    private String nombre;
  private String cedula;
  private String direccion;
  public ArrayList<Cuenta> Cuentas;
 
 
+    /**
+     * Constructor con todos los atributos de la clase
+     * @param nombre
+     * @param cedula
+     * @param direccion
+     * @param cuentas
+     */
     public Cliente(String nombre, String cedula, String direccion, ArrayList<Cuenta> cuentas) {
         this.nombre = nombre;
         this.cedula = cedula;
@@ -17,12 +28,22 @@ public class Cliente {
         Cuentas = cuentas;
     }
 
+    /**
+     * Constructor que permite crear nuevo cliente sin tener cuentas asociadas
+     * @param nombre
+     * @param cedula
+     * @param direccion
+     */
     public Cliente(String nombre, String cedula, String direccion) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.direccion = direccion;
     }
 
+    /**
+     * Getter y setter de cada atributo
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
@@ -55,6 +76,11 @@ public class Cliente {
         Cuentas = cuentas;
     }
 
+    /**
+     * Metodo equals de la clase cliente
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,13 +94,15 @@ public class Cliente {
         return Objects.hash(nombre, cedula, direccion, Cuentas);
     }
 
-
+    /**
+     * Metodo toString de la clase cliente
+     * @return
+     */
     @Override
     public String toString() {
         return "nombre='" + nombre + '\'' +
                 ", cedula='" + cedula + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", Cuentas=" + Cuentas +
+                ", direccion='" + direccion +
                 '\n';
     }
 }

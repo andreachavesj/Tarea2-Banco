@@ -22,6 +22,11 @@ public class CuentaAhorro {
 @FXML Button btnRegresar;
 @FXML Button btnRegistrar;
 
+    /**
+     * Funcion que permite crear y guardar una nueva cuenta de ahorro cumpliendo con todas las validaciones necesarias
+     * como el de verificar que la cedula si exista y no haya espacios en blanco y el deposito sea mayor a 50 mil
+     * @throws Exception
+     */
     public void guardarCuenta() throws Exception {
         String cedula=txtCedula.getText();
         Double deposito= Double.valueOf(txtDeposito.getText());
@@ -31,11 +36,17 @@ public class CuentaAhorro {
             int numeroCuenta = CuentaControlador.registrarCuentaAhorro(cedula, deposito, interes);
             mensajeExitoso(numeroCuenta);
             System.out.println(CuentaControlador.conjuntoCuentasAhorro.toString());
-
+            limpiarCampos();
         }else{
             mensajeError();
         }
     }
+
+    /**
+     * Funcion que permite validar que los espacios no esten en blanco y el deposito sea mayor o igual a 50 mil
+     * @param deposito
+     * @return
+     */
     public boolean ValidarCampos(double deposito){
         boolean completo=true;
         if((txtCedula==null)||(txtDeposito==null)||(txtInteres==null)){
@@ -56,6 +67,11 @@ public class CuentaAhorro {
             return completo=true;
         }
     }
+
+    /**
+     * Funcion que muestra un mensaje de exito en caso de realizar el registro
+     * @param cuenta
+     */
     public void mensajeExitoso(int cuenta){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -63,6 +79,10 @@ public class CuentaAhorro {
         alert.setContentText("Su registro ha sido exitoso, su numero de cuenta es: "+ cuenta);
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que muestra un mensaje de error en caso de que alguna validacion no se cumpla
+     */
     public void mensajeError(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
@@ -70,9 +90,24 @@ public class CuentaAhorro {
         alert.setContentText("Existe un error, verifique los datos");
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que permite ir a la ventana de crear cuenta por medio de un boton
+     * @param actionEvent
+     * @throws IOException
+     */
     public void IrCrearCuenta(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("CrearCuenta.fxml")));
         Stage window = (Stage) btnRegresar.getScene().getWindow();
         window.setScene(new Scene(root));
+    }
+
+    /**
+     * Funcion que permite limpiar los campos despues de realizar el registro
+     */
+    public void limpiarCampos(){
+        txtCedula.setText("");
+        txtInteres.setText("");
+        txtDeposito.setText("");
     }
 }

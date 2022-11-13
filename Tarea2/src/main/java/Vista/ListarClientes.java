@@ -25,12 +25,21 @@ public class ListarClientes {
     Button btnRegresar;
     @FXML Button btnMostrar;
 
+    /**
+     * Funcion que permite ir a la ventana de menu principal
+     * @param actionEvent
+     * @throws IOException
+     */
     public void IrMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("Menu.fxml")));
         Stage window = (Stage) btnRegresar.getScene().getWindow();
         window.setScene(new Scene(root));
     }
 
+    /**
+     * Funcion que permite listar a los clientes
+     * @param actionEvent
+     */
     public void listarClientes(ActionEvent actionEvent) {
         txtClientes.setText(ClienteControlador.conjuntoClientes.toString());
     }

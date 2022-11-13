@@ -5,11 +5,22 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Movimientos {
+
+    /**
+     * Atributos de la clase movimientos
+     */
     private int cuenta;
     private LocalDate fechaMovimiento;
     private String descripcion;
     private double monto;
 
+    /**
+     * Constructor de la clase movimientos con todos sus atributos
+     * @param cuenta
+     * @param fechaMovimiento
+     * @param descripcion
+     * @param monto
+     */
     public Movimientos(int cuenta, LocalDate fechaMovimiento, String descripcion, double monto) {
         this.cuenta = cuenta;
         this.fechaMovimiento = fechaMovimiento;
@@ -17,6 +28,10 @@ public class Movimientos {
         this.monto = monto;
     }
 
+    /**
+     * Getter y setter de todos los atributos
+     * @return
+     */
     public int getCuenta() {
         return cuenta;
     }
@@ -49,6 +64,12 @@ public class Movimientos {
         this.monto = monto;
     }
 
+
+    /**
+     * Metodo equals de la clase movimientos
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,6 +83,10 @@ public class Movimientos {
         return Objects.hash(cuenta, fechaMovimiento, descripcion, monto);
     }
 
+    /**
+     * Metodo toString de la clase movimientos
+     * @return
+     */
     @Override
     public String toString() {
         return "Movimientos{" +
