@@ -23,6 +23,12 @@ public class CuentaAhorroProgramado {
     Button btnRegresar;
     @FXML Button btnRegistrar;
 
+
+    /**
+     * Funcion que permite crear una cuenta de ahorro programada si logra cumplir con las validaciones
+     * de verificar cliente y validar campos y si es asi crea la cuenta y muestra mensaje de exito y sino de error
+     * @throws Exception
+     */
     public void guardarCuenta() throws Exception {
         String cedula=txtCedula.getText();
         int cuentaCorriente = Integer.valueOf(txtCorriente.getText());
@@ -30,10 +36,19 @@ public class CuentaAhorroProgramado {
         if(CuentaControlador.verificarCliente(cedula, cuentaCorriente)==true && ValidarCampos(cedula, cuentaCorriente, deposito)==true){
             int numeroCuentaProgramado = CuentaControlador.registrarCuentaAhorroProgramado(cedula, deposito, cuentaCorriente);
             mensajeExitoso(numeroCuentaProgramado);
+            limpiarCampos();
         }else{
             mensajeError();
         }
     }
+
+    /**
+     * Funcion que permite validar que los campos no esten vacios y el monto sea mayor a 0
+     * @param cedula
+     * @param cuentaAsociada
+     * @param monto
+     * @return
+     */
     public boolean ValidarCampos( String cedula, int cuentaAsociada, double monto){
         boolean completo=true;
         if(cedula.isEmpty()){
@@ -54,6 +69,11 @@ public class CuentaAhorroProgramado {
             return completo=true;
         }
     }
+
+    /**
+     * Funcion que muestra un mensaje de exito en caso de realizar el registro
+     * @param cuenta
+     */
     public void mensajeExitoso(int cuenta){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -61,6 +81,10 @@ public class CuentaAhorroProgramado {
         alert.setContentText("Su registro ha sido exitoso, su numero de cuenta es: "+ cuenta);
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que muestra un mensaje en caso de error
+     */
     public void mensajeError(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
@@ -68,9 +92,20 @@ public class CuentaAhorroProgramado {
         alert.setContentText("Ha ocurrido un error, verifique sus datos");
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que permite ir a la ventana de crear cuenta mediante un boton
+     * @param actionEvent
+     * @throws IOException
+     */
     public void IrCrearCuenta(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("CrearCuenta.fxml")));
         Stage window = (Stage) btnRegresar.getScene().getWindow();
         window.setScene(new Scene(root));
+    }
+    public void limpiarCampos(){
+        txtCedula.setText("");
+        txtMonto.setText("");
+        txtCorriente.setText("");
     }
 }

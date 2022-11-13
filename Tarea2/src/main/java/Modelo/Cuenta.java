@@ -5,18 +5,34 @@ import java.util.Objects;
 
 public class Cuenta {
 
+    /**
+     * Atributos de la clase cuenta
+     */
     private String cedula;
     private int numeroCuenta;
     private double saldo;
 
     private LocalDate apertura;
 
+    /**
+     * Constructor para la cuenta que no incluye cedula
+     * @param numeroCuenta
+     * @param saldo
+     * @param apertura
+     */
     public Cuenta(int numeroCuenta, double saldo, LocalDate apertura) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
         this.apertura = apertura;
     }
 
+    /**
+     * Constructor para la clase cuenta con todos sus atributos
+     * @param cedula
+     * @param numeroCuenta
+     * @param saldo
+     * @param apertura
+     */
     public Cuenta(String cedula, int numeroCuenta, double saldo, LocalDate apertura) {
         this.cedula = cedula;
         this.numeroCuenta = numeroCuenta;
@@ -24,6 +40,10 @@ public class Cuenta {
         this.apertura = apertura;
     }
 
+    /**
+     * Getter y setter de todos los atributos
+     * @return
+     */
     public String getCedula() {
         return cedula;
     }
@@ -56,6 +76,11 @@ public class Cuenta {
         this.apertura = apertura;
     }
 
+    /**
+     * Metodo equals de la clase cuenta
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,6 +94,10 @@ public class Cuenta {
         return Objects.hash(numeroCuenta, saldo, apertura);
     }
 
+    /**
+     * Metodo toString de la clase cuenta
+     * @return
+     */
     @Override
     public String toString() {
         return "Cuenta{" +

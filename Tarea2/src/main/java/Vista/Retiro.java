@@ -24,6 +24,11 @@ public class Retiro {
     @FXML TextField txtMonto;
 
 
+    /**
+     * Funcion que permite realizar un retiro si se cumplen las validaciones de verificar cliente y validar campos
+     * y mostrar mensaje de exito, si no uno de error
+     * @throws Exception
+     */
     public void realizarRetiro() throws Exception {
         String cedula=txtCedula.getText();
         int cuenta = Integer.valueOf(txtCuenta.getText());
@@ -35,6 +40,13 @@ public class Retiro {
             mensajeError();
         }
     }
+
+    /**
+     * Funcion que permite validar campos que no esten vacios y el retiro sea mayor o igual a 0
+     * @param cedula
+     * @param retiro
+     * @return
+     */
     public boolean ValidarCampos(String cedula, double retiro){
         boolean completo=true;
         if((cedula.isEmpty())||(txtCuenta==null)){
@@ -55,6 +67,10 @@ public class Retiro {
             return completo=true;
         }
     }
+
+    /**
+     * Funcion que muestra un mensaje de exito
+     */
     public static void mensajeExitoso(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -62,6 +78,10 @@ public class Retiro {
         alert.setContentText("Retiro realizado con éxito");
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que muestra mensaje de error
+     */
     public static void mensajeError(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
@@ -69,6 +89,12 @@ public class Retiro {
         alert.setContentText("Ha ocurrido un error, porfavor ingrese datos válidos");
         alert.showAndWait();
     }
+
+    /**
+     * Funcion que permite ir a la ventana de acceder cuenta por medio de un boton
+     * @param actionEvent
+     * @throws IOException
+     */
     public void IrAccederCuenta(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(InicioBanco.class.getResource("AccederCuenta.fxml")));
         Stage window = (Stage) btnRegresar.getScene().getWindow();
